@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="TelerikUIToolsTest.Pages.MainPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikListViewCommands="clr-namespace:Telerik.XamarinForms.DataControls.ListView.Commands;assembly=Telerik.XamarinForms.DataControls"
+             Title="Monkeys"
+             mc:Ignorable="d">
+    <telerikDataControls:RadListView x:Name="listView"
+                                     ItemsSource="{Binding Monkeys}"
+                                     SelectionMode="Single"
+                                     HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand">
+        <telerikDataControls:RadListView.Commands>
+            <telerikListViewCommands:ListViewUserCommand Id="ItemTap"
+                                                         Command="{Binding ItemTapCommand}" />
+        </telerikDataControls:RadListView.Commands>
+        <telerikDataControls:RadListView.ItemTemplate>
+            <DataTemplate>
+                <telerikListView:ListViewTemplateCell>
+                    <telerikListView:ListViewTemplateCell.View>
+                        <Grid Padding="20"
+                              HorizontalOptions="FillAndExpand"
+                              VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="75" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Grid.Column="0"
+                                   WidthRequest="75"
+                                   HeightRequest="75"
+                                   Aspect="AspectFit"
+                                   Source="{Binding Image}"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   FontAttributes="Bold"
+                                   Text="{Binding Name}"
+                                   TextColor="Black" />
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding Location}"
+                                   TextColor="Black" />
+                        </Grid>
+                    </telerikListView:ListViewTemplateCell.View>
+                </telerikListView:ListViewTemplateCell>
+            </DataTemplate>
+        </telerikDataControls:RadListView.ItemTemplate>
+    </telerikDataControls:RadListView>
+</ContentPage>
